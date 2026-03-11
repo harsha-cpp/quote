@@ -1,4 +1,4 @@
-const apiUrl = "https://your-lambda-url.lambda-url.region.on.aws/";
+const apiUrl = "https://ylxym73jzllrm7ajekhny4o7tm0hoaqc.lambda-url.us-east-1.on.aws/";
 
 const quoteButton = document.getElementById("quoteButton");
 const statusText = document.getElementById("status");
