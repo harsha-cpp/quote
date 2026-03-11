@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serverless Quote App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="card">
+        
+        <h1>Serverless Quote App</h1>
+        <br>
+        <button id="quoteButton" type="button">Get Quote</button>
+        <p class="status" id="status" aria-live="polite">
+          Click the button to load a quote.
+        </p>
+        <blockquote class="quote" id="quoteCard" hidden>
+          <p id="quoteText"></p>
+          <footer id="quoteAuthor"></footer>
+        </blockquote>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

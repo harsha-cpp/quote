@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check required files
+        run: |
+          test -f frontend/index.html
+          test -f frontend/style.css
+          test -f frontend/script.js
+          test -f lambda/index.js
+          test -f README.md
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check frontend/script.js
+          node --check lambda/index.js
+
+      - name: Check app text
+        run: |
+          grep -q "Get Quote" frontend/index.html
+          grep -q "your-lambda-url.lambda-url.region.on.aws" frontend/script.js
