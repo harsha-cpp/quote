@@ -4,7 +4,7 @@ const quotes = [
     author: "Leonardo da Vinci"
   },
    {
-    quote: "WELCOME TO SDA CLASS",
+    quote: "Good morning! Remember, every line of code you write is a step towards creating something amazing. Keep coding and stay inspired!",
     author: "HARSHA"
   },
   {
