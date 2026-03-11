@@ -32,6 +32,7 @@ README.md
 3. The Lambda function returns one random quote as JSON.
 4. The frontend shows loading, success, and error states.
 5. GitHub Actions checks the main files and JavaScript syntax on every push and pull request.
+6. Pushes to `main` can also deploy the Lambda function automatically from GitHub Actions.
 
 ## Frontend
 
@@ -92,6 +93,34 @@ Example response:
 14. Deploy the site.
 15. Open the Cloudflare Pages URL and test the button.
 
+## GitHub Actions Lambda Deployment Setup
+
+To enable Lambda CD from GitHub Actions, add these repository secrets in GitHub:
+
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `AWS_REGION`
+- `AWS_LAMBDA_FUNCTION_NAME`
+
+The function name should match your Lambda function, for example:
+
+```text
+serverless-quote-app
+```
+
+The workflow in `.github/workflows/ci.yml` will:
+
+1. Run validation on every push and pull request.
+2. Deploy the Lambda code on non-PR runs from the `main` branch.
+
+To add the secrets:
+
+1. Open your GitHub repository.
+2. Go to `Settings`.
+3. Go to `Secrets and variables`.
+4. Open `Actions`.
+5. Add each secret one by one.
+
 ## Git Commands for the Seminar
 
 If this folder is not already its own Git repository, run:
@@ -123,7 +152,8 @@ git push
 - A push to GitHub starts the workflow in `.github/workflows/ci.yml`.
 - The workflow checks that the required files exist.
 - The workflow runs JavaScript syntax checks for the frontend and Lambda files.
-- This gives a simple example of automated validation before deployment.
+- On `main`, the workflow can also deploy the Lambda function automatically.
+- Cloudflare Pages handles the frontend deployment from the GitHub repository.
 
 ## Seminar Speaking Points
 
@@ -139,11 +169,12 @@ git push
 1. Show the repository structure.
 2. Open `frontend/script.js` and point at the API URL.
 3. Open `lambda/index.js` and show the JSON response logic.
-4. Push a small change to GitHub and show the GitHub Actions run.
-5. Open the Cloudflare Pages site.
-6. Click `Get Quote`.
-7. Refresh and click again to show a different quote.
-8. Open browser dev tools and show the network request to Lambda.
+4. Open `.github/workflows/ci.yml` and explain validation plus Lambda deployment.
+5. Push a small change to GitHub and show the GitHub Actions run.
+6. Open the Cloudflare Pages site.
+7. Click `Get Quote`.
+8. Refresh and click again to show a different quote.
+9. Open browser dev tools and show the network request to Lambda.
 
 ## Why This Project Works Well for a Seminar
 
