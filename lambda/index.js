@@ -3,6 +3,10 @@ const quotes = [
     quote: "Simplicity is the ultimate sophistication.",
     author: "Leonardo da Vinci"
   },
+   {
+    quote: "WELCOME TO SDA CLASS",
+    author: "HARSHA"
+  },
   {
     quote: "First, solve the problem. Then, write the code.",
     author: "John Johnson"
